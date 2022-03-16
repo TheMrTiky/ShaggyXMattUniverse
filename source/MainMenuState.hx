@@ -39,7 +39,7 @@ class MainMenuState extends MusicBeatState
 		'freeplay',
 		#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
-		'options'
+		'options',
 		#if !switch 'shaggyrolled' #end
 	];
 
