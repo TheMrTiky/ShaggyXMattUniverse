@@ -114,7 +114,7 @@ class PlayState extends MusicBeatState
 	public static var curStage:String = '';
 	public static var isPixelStage:Bool = false;
 	public static var SONG:SwagSong = null;
-	public static var isStoryMode:Bool = false;
+	public static var isShaggyxMatt:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -334,7 +334,7 @@ class PlayState extends MusicBeatState
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
-		if (isStoryMode)
+		if (isShaggyxMatt)
 		{
 			detailsText = "Story Mode: " + WeekData.getCurrentWeek().weekName;
 		}
@@ -1099,7 +1099,7 @@ class PlayState extends MusicBeatState
 		#end
 		
 		var daSong:String = Paths.formatToSongPath(curSong);
-		if (isStoryMode && !seenCutscene)
+		if (isShaggyxMatt && !seenCutscene)
 		{
 			switch (daSong)
 			{
@@ -1993,7 +1993,7 @@ class PlayState extends MusicBeatState
 
 			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
 			babyArrow.downScroll = ClientPrefs.downScroll;
-			if (!isStoryMode && !skipArrowStartTween)
+			if (!isShaggyxMatt && !skipArrowStartTween)
 			{
 				//babyArrow.y -= 10;
 				babyArrow.alpha = 0;
@@ -2031,7 +2031,7 @@ class PlayState extends MusicBeatState
 	{
 		//funny dissapear transitions
 		//while new strums appear
-		if (!isStoryMode)
+		if (!isShaggyxMatt)
 		{
 			for (i in 0...playerStrums.members.length) {
 				var oldStrum:FlxSprite = playerStrums.members[i].clone();
@@ -3270,7 +3270,7 @@ class PlayState extends MusicBeatState
 				return;
 			}
 
-			if (isStoryMode)
+			if (isShaggyxMatt)
 			{
 				campaignScore += songScore;
 				campaignMisses += songMisses;
@@ -4496,7 +4496,7 @@ class PlayState extends MusicBeatState
 				switch(achievementName)
 				{
 					case 'week1_nomiss' | 'week2_nomiss' | 'week3_nomiss' | 'week4_nomiss' | 'week5_nomiss' | 'week6_nomiss' | 'week7_nomiss':
-						if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'HARD' && storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
+						if(isShaggyxMatt && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'HARD' && storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
 						{
 							var weekName:String = WeekData.getWeekFileName();
 							switch(weekName) //I know this is a lot of duplicated code, but it's easier readable and you can add weeks with different names than the achievement tag
