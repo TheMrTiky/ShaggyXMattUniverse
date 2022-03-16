@@ -21,7 +21,7 @@ import WeekData;
 
 using StringTools;
 
-class StoryMenuState extends MusicBeatState
+class ShaggyxMattState extends MusicBeatState
 {
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 
