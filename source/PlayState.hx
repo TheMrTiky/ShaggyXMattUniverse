@@ -115,6 +115,7 @@ class PlayState extends MusicBeatState
 	public static var isPixelStage:Bool = false;
 	public static var SONG:SwagSong = null;
 	public static var isShaggyxMatt:Bool = false;
+	public static var isAlternativeUniveree:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -336,7 +337,11 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isShaggyxMatt)
 		{
-			detailsText = "Story Mode: " + WeekData.getCurrentWeek().weekName;
+			detailsText = "ShaggyxMatt: " + WeekData.getCurrentWeek().weekName;
+		}
+		if (isAlternativeUniveree)
+		{
+			detailsText = "isAlternativeUniveree: " + WeekData.getCurrentWeek().weekName;
 		}
 		else
 		{
@@ -1999,6 +2004,12 @@ class PlayState extends MusicBeatState
 				babyArrow.alpha = 0;
 				FlxTween.tween(babyArrow, {/*y: babyArrow.y + 10,*/ alpha: targetAlpha}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
 			}
+       if (!isShaggyxMatt && !skipArrowStartTween)
+			{
+				//babyArrow.y -= 10;
+				babyArrow.alpha = 0;
+				FlxTween.tween(babyArrow, {/*y: babyArrow.y + 10,*/ alpha: targetAlpha}, 1, {ease: FlxEase.circOut, startDelay: 0.5 + (0.2 * i)});
+			}
 			else
 			{
 				babyArrow.alpha = targetAlpha;
@@ -2048,7 +2059,24 @@ class PlayState extends MusicBeatState
 					remove(oldStrum);
 				}});
 			}
+			if (!isAlternativeUniveree)
+		{
+			for (i in 0...playerStrums.members.length) {
+				var oldStrum:FlxSprite = playerStrums.members[i].clone();
+				oldStrum.x = playerStrums.members[i].x;
+				oldStrum.y = playerStrums.members[i].y;
+				oldStrum.alpha = playerStrums.members[i].alpha;
+				oldStrum.scrollFactor.set();
+				oldStrum.cameras = [camHUD];
+				oldStrum.setGraphicSize(Std.int(oldStrum.width * Note.scales[mania]));
+				oldStrum.updateHitbox();
+				add(oldStrum);
 	
+				FlxTween.tween(oldStrum, {alpha: 0}, 1, {onComplete: function(_) {
+					remove(oldStrum);
+				}});
+			}
+			
 			for (i in 0...opponentStrums.members.length) {
 				var oldStrum:FlxSprite = opponentStrums.members[i].clone();
 				oldStrum.x = opponentStrums.members[i].x;
@@ -3270,6 +3298,24 @@ class PlayState extends MusicBeatState
 				return;
 			}
 
+
+			if (isAlternativeUniveree)
+			{
+				campaignScore += songScore;
+				campaignMisses += songMisses;
+
+				storyPlaylist.remove(storyPlaylist[0]);
+
+				if (storyPlaylist.length <= 0)
+				{
+					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+
+					cancelMusicFadeTween();
+					if(FlxTransitionableState.skipNextTransIn) {
+						CustomFadeTransition.nextCamera = null;
+					}
+					MusicBeatState.switchState(new AlternativeUnivereeState());
+
 			if (isShaggyxMatt)
 			{
 				campaignScore += songScore;
@@ -3291,12 +3337,16 @@ class PlayState extends MusicBeatState
 					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {
 						ShaggyxMattState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 
+					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {
+						AlternativeUnivereeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+
 						if (SONG.validScore)
 						{
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 						}
 
 						FlxG.save.data.weekCompleted = ShaggyxMattState.weekCompleted;
+						 AlternativeUnivereeState.weekCompleted;
 						FlxG.save.flush();
 					}
 					changedDifficulty = false;
