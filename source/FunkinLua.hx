@@ -803,8 +803,10 @@ class FunkinLua {
 			if(FlxTransitionableState.skipNextTransIn)
 				CustomFadeTransition.nextCamera = null;
 
-			if(PlayState.isStoryMode)
-				MusicBeatState.switchState(new StoryMenuState());
+			if(PlayState.isShaggyxMatt)
+				MusicBeatState.switchState(new ShaggyxMattState());
+			if(PlayState.isAlternativeUnivereeState)
+				MusicBeatState.switchState(new AlternativeUnivereeStateState());
 			else
 				MusicBeatState.switchState(new FreeplayState());
 
