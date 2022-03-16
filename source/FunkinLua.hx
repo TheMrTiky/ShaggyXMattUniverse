@@ -103,7 +103,7 @@ class FunkinLua {
 		set('songName', PlayState.SONG.song);
 		set('startedCountdown', false);
 
-		set('isStoryMode', PlayState.isStoryMode);
+		set('isShaggyxMatt', PlayState.isShaggyxMatt);
 		set('difficulty', PlayState.storyDifficulty);
 		set('difficultyName', CoolUtil.difficulties[PlayState.storyDifficulty]);
 		set('weekRaw', PlayState.storyWeek);
@@ -806,7 +806,7 @@ class FunkinLua {
 			if(PlayState.isShaggyxMatt)
 				MusicBeatState.switchState(new ShaggyxMattState());
 			if(PlayState.isAlternativeUnivereeState)
-				MusicBeatState.switchState(new AlternativeUnivereeStateState());
+				MusicBeatState.switchState(new AlternativeUnivereeState());
 			else
 				MusicBeatState.switchState(new FreeplayState());
 
