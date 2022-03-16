@@ -40,7 +40,7 @@ class MainMenuState extends MusicBeatState
 		#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
 		'options'
-		#if !switch 'shaggyrolled', #end
+		#if !switch 'shaggyrolled' #end
 	];
 
 	var magenta:FlxSprite;
@@ -203,7 +203,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'shaggyrolled')
 				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+					CoolUtil.browserLoad('https://rroll.to/esXpH1');
 				}
 				else
 				{
