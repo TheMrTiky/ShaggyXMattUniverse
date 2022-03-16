@@ -253,6 +253,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.seenCutscene = false;
 					if(PlayState.isShaggyxMatt) {
 						MusicBeatState.switchState(new ShaggyxMattState());
+					}
 					if(PlayState.isAlternativeUniveree) {
 						MusicBeatState.switchState(new AlternativeUnivereeState());
 					} else {
