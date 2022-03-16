@@ -251,8 +251,10 @@ class PauseSubState extends MusicBeatSubstate
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
-					if(PlayState.isStoryMode) {
-						MusicBeatState.switchState(new StoryMenuState());
+					if(PlayState.isShaggyxMatt) {
+						MusicBeatState.switchState(new ShaggyxMattState());
+					if(PlayState.isAlternativeUniveree) {
+						MusicBeatState.switchState(new AlternativeUnivereeState());
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
 					}
