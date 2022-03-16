@@ -236,8 +236,7 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new ShaggyxMattState());
 								{
 									case 'au':
-										MusicBeatState.switchState(new
-									  AlternativeUnivereeState());
+										MusicBeatState.switchState(new AlternativeUnivereeState());
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									case 'awards':
