@@ -2059,6 +2059,7 @@ class PlayState extends MusicBeatState
 					remove(oldStrum);
 				}});
 			}
+		}
 			if (!isAlternativeUniveree)
 		{
 			for (i in 0...playerStrums.members.length) {
@@ -2103,7 +2104,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 	}
-}
+
 	override function openSubState(SubState:FlxSubState)
 	{
 		if (paused)
@@ -3421,7 +3422,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 	#end
-}
 
 	public function KillNotes() {
 		while(notes.length > 0) {
