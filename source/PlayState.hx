@@ -3315,6 +3315,7 @@ class PlayState extends MusicBeatState
 					if(FlxTransitionableState.skipNextTransIn) {
 						CustomFadeTransition.nextCamera = null;
 					}
+				}
 					MusicBeatState.switchState(new AlternativeUnivereeState());
 
 			if (isShaggyxMatt)
@@ -3405,6 +3406,7 @@ class PlayState extends MusicBeatState
 			transitioning = true;
 		}
 	}
+}
 
 	#if ACHIEVEMENTS_ALLOWED
 	var achievementObj:AchievementObject = null;
@@ -3422,6 +3424,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 	#end
+	}
 
 	public function KillNotes() {
 		while(notes.length > 0) {
