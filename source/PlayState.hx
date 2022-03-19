@@ -3421,6 +3421,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 	#end
+}
 
 	public function KillNotes() {
 		while(notes.length > 0) {
