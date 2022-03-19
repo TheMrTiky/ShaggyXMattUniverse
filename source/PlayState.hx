@@ -2103,7 +2103,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 	}
-
+}
 	override function openSubState(SubState:FlxSubState)
 	{
 		if (paused)
